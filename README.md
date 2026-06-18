@@ -1,225 +1,613 @@
-# 🎨 1. TipTap Rich Text Editor
+<div align="center">
 
-## Tính năng Editor
+# 🚀 Ngọc Tú CMS
 
-| Tính năng | Mô tả |
-|-----------|--------|
-| Định dạng văn bản | Bold, Italic, Underline, Strikethrough, Subscript, Superscript |
-| Tiêu đề | H1, H2, H3, H4, H5, H6 |
-| Danh sách | Bullet List, Numbered List |
-| Căn chỉnh | Left, Center, Right |
-| Chèn ảnh | Upload ảnh lên Supabase Storage hoặc nhập URL |
-| Chèn video | Nhúng YouTube Video |
-| Bảng | Insert Table với Header, Resize |
-| Trích dẫn | Blockquote với style đẹp |
-| Code Block | Syntax Highlighting |
-| Highlight | Đánh dấu văn bản nhiều màu |
-| Link | Thêm/Sửa/Xóa Hyperlink |
-| Undo/Redo | Hỗ trợ phím tắt `Ctrl + Z` / `Ctrl + Y` |
+### Modern CMS Platform powered by Next.js 15, Supabase & TipTap Editor
 
-## Cấu trúc file
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-green?logo=supabase)](https://supabase.com/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?logo=tailwindcss)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://vercel.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**Developed by Ngọc Tú**
+
+</div>
+
+---
+
+# 📖 Giới Thiệu
+
+**Ngọc Tú CMS** là hệ thống quản trị nội dung (CMS) hiện đại được xây dựng bằng Next.js App Router và Supabase.
+
+Hệ thống hỗ trợ:
+
+- 📰 Quản lý bài viết chuyên nghiệp
+- 📂 Quản lý danh mục
+- 👥 Quản lý người dùng và phân quyền
+- ✍️ TipTap Rich Text Editor
+- 📧 Newsletter Marketing
+- 🎨 Tùy chỉnh giao diện
+- 🌙 Dark Mode
+- ☁️ Upload hình ảnh lên Supabase Storage
+- 🔐 Authentication & Authorization
+- 🚀 Deploy nhanh trên Vercel
+
+---
+
+# 📋 Mục Lục
+
+- [Tính năng](#-tính-năng)
+- [Kiến trúc hệ thống](#-kiến-trúc-hệ-thống)
+- [Cấu trúc dự án](#-cấu-trúc-dự-án)
+- [Yêu cầu hệ thống](#-yêu-cầu-hệ-thống)
+- [Cài đặt](#-cài-đặt)
+- [Cấu hình môi trường](#-cấu-hình-môi-trường)
+- [Supabase Setup](#-supabase-setup)
+- [TipTap Editor](#-tiptap-rich-text-editor)
+- [Newsletter](#-newsletter-subscription)
+- [Deploy lên Vercel](#-deploy-lên-vercel)
+- [Database Schema](#-database-schema)
+- [Roadmap](#-roadmap)
+- [License](#-license)
+
+---
+
+# ✨ Tính Năng
+
+## 🌐 Frontend Website
+
+| Tính năng | Trạng thái |
+|------------|------------|
+| Hero Section | ✅ |
+| Featured Posts | ✅ |
+| Post Grid | ✅ |
+| Search | ✅ |
+| Category Pages | ✅ |
+| Related Posts | ✅ |
+| Responsive | ✅ |
+| Dark Mode | ✅ |
+| Newsletter Form | ✅ |
+
+---
+
+## 🔐 Authentication
+
+| Tính năng | Trạng thái |
+|------------|------------|
+| Login | ✅ |
+| Logout | ✅ |
+| Session Management | ✅ |
+| Role Permission | ✅ |
+| Admin | ✅ |
+| Editor | ✅ |
+| Author | ✅ |
+
+---
+
+## 📝 Content Management
+
+| Tính năng | Trạng thái |
+|------------|------------|
+| CRUD Posts | ✅ |
+| CRUD Categories | ✅ |
+| Upload Cover Image | ✅ |
+| SEO Meta | ✅ |
+| Tags | ✅ |
+| Slug Generator | ✅ |
+
+---
+
+## ⚙️ Administration
+
+| Tính năng | Trạng thái |
+|------------|------------|
+| Dashboard | ✅ |
+| User Management | ✅ |
+| Appearance Settings | ✅ |
+| Site Settings | ✅ |
+| Newsletter Management | ✅ |
+
+---
+
+# 🏗️ Kiến Trúc Hệ Thống
+
+```text
+Browser
+   │
+   ▼
+Next.js Frontend
+   │
+   ├── Server Actions
+   ├── API Routes
+   │
+   ▼
+Supabase Backend
+   ├── PostgreSQL
+   ├── Authentication
+   └── Storage
+```
+
+---
+
+# 📂 Cấu Trúc Dự Án
+
+```text
+thaygiaocago-cms/
+
+├── src/
+│
+├── app/
+│   ├── (site)
+│   ├── (admin)
+│   ├── api
+│   ├── login
+│   └── unsubscribe
+│
+├── components/
+│   ├── admin
+│   ├── site
+│   └── ui
+│
+├── hooks
+├── lib
+├── styles
+├── types
+│
+└── supabase/
+    └── migrations
+```
+
+---
+
+# 💻 Yêu Cầu Hệ Thống
+
+| Thành phần | Phiên bản |
+|------------|-----------|
+| Node.js | >= 20 |
+| npm | >= 10 |
+| PostgreSQL | Supabase |
+| Next.js | 15 |
+| TypeScript | 5 |
+
+---
+
+# ⚡ Cài Đặt
+
+## Clone Repository
+
+```bash
+git clone https://github.com/ngoctu2008/thaygiaocago-cms.git
+
+cd thaygiaocago-cms
+```
+
+## Cài đặt Packages
+
+```bash
+npm install
+```
+
+## Chạy Local
+
+```bash
+npm run dev
+```
+
+Mở trình duyệt:
+
+```text
+http://localhost:3000
+```
+
+---
+
+# 🔧 Cấu Hình Môi Trường
+
+Tạo file:
+
+```env
+.env.local
+```
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+NEXT_PUBLIC_SITE_NAME=Ngọc Tú
+
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+
+RESEND_API_KEY=re_xxxxxxxxx
+```
+
+---
+
+# 🗄️ Supabase Setup
+
+## Tạo Project
+
+Truy cập:
+
+```text
+https://supabase.com
+```
+
+Tạo project mới.
+
+---
+
+## Chạy Migration
+
+SQL Editor → New Query
+
+Chạy:
+
+```sql
+001_initial_schema.sql
+```
+
+Tiếp theo:
+
+```sql
+002_newsletter.sql
+```
+
+---
+
+## Authentication
+
+```text
+Authentication
+→ Settings
+→ Enable Email Provider
+```
+
+---
+
+## Storage
+
+```text
+Storage
+→ Create Bucket
+→ images
+→ Public
+```
+
+---
+
+# 🎨 TipTap Rich Text Editor
+
+## Tính năng
+
+| Tính năng | Hỗ trợ |
+|------------|---------|
+| Bold | ✅ |
+| Italic | ✅ |
+| Underline | ✅ |
+| Strikethrough | ✅ |
+| Subscript | ✅ |
+| Superscript | ✅ |
+| H1-H6 | ✅ |
+| Bullet List | ✅ |
+| Ordered List | ✅ |
+| Alignment | ✅ |
+| Image Upload | ✅ |
+| YouTube Embed | ✅ |
+| Table | ✅ |
+| Blockquote | ✅ |
+| Code Block | ✅ |
+| Highlight | ✅ |
+| Link | ✅ |
+| Undo / Redo | ✅ |
+
+---
+
+## Cấu trúc
 
 ```text
 src/components/admin/
-├── EditorToolbar.tsx      # Thanh công cụ với 30+ nút chức năng
-├── TipTapEditor.tsx       # Component editor chính với modal chèn ảnh
-└── AdminSidebar.tsx       # Đã thêm menu Newsletter
+
+├── EditorToolbar.tsx
+├── TipTapEditor.tsx
+└── AdminSidebar.tsx
 
 src/styles/
-└── editor.css             # Custom CSS cho table, YouTube embed, highlight
+
+└── editor.css
 ```
 
-## Cách sử dụng trong form bài viết
+---
+
+## Sử dụng
 
 ```tsx
 const TipTapEditor = dynamic(
   () => import("@/components/admin/TipTapEditor"),
-  { ssr: false }
+  {
+    ssr: false
+  }
 );
 
 <TipTapEditor
   content={content}
   onChange={setContent}
   placeholder="Viết nội dung bài viết..."
-/>;
+/>
 ```
 
 ---
 
-# 📧 2. Newsletter Subscription
+# 📧 Newsletter Subscription
 
-## Tính năng Newsletter
+## Tính năng
 
-| Tính năng | Mô tả |
-|-----------|--------|
-| Đăng ký | Form đăng ký ở Footer, Sidebar (Card) hoặc Inline |
-| Xác thực email | Kiểm tra email đã tồn tại, hỗ trợ Re-subscribe |
-| Hủy đăng ký | Link Unsubscribe an toàn với Token xác thực |
-| Gửi chiến dịch | Soạn và gửi Email HTML đến toàn bộ Subscribers |
-| Thống kê | Theo dõi Sent Count, Open Rate, Click Rate |
-| Quản lý Subscribers | Xem danh sách, trạng thái, xóa Subscriber |
-| Quản lý Campaigns | Xem lịch sử chiến dịch, xóa Campaign |
+| Tính năng | Trạng thái |
+|------------|------------|
+| Subscribe | ✅ |
+| Re-subscribe | ✅ |
+| Unsubscribe | ✅ |
+| Campaign Management | ✅ |
+| Open Tracking | ✅ |
+| Click Tracking | ✅ |
+| Statistics | ✅ |
 
-## Cấu trúc file
+---
+
+## API Routes
 
 ```text
-src/components/site/
-└── NewsletterForm.tsx     # 3 variants: card, inline, footer
+/api/newsletter/
 
-src/app/(admin)/dashboard/
-└── newsletter/
-    └── page.tsx           # Trang quản lý Newsletter đầy đủ
-
-src/app/api/newsletter/
-├── subscribe/route.ts     # POST: Đăng ký nhận tin
-├── unsubscribe/route.ts   # GET: Hủy đăng ký (với Token)
-├── subscribers/route.ts   # GET/DELETE: Quản lý Subscribers
-├── campaigns/route.ts     # GET/DELETE: Quản lý Campaigns
-└── send/route.ts          # POST: Gửi chiến dịch Email
-
-src/app/
-└── unsubscribe/
-    └── page.tsx           # Trang xác nhận hủy đăng ký
-
-supabase/migrations/
-└── 002_newsletter.sql     # Schema Newsletter Tables
-```
-
-## Database Schema (Newsletter)
-
-```sql
-newsletter_subscribers
-├── id
-├── email
-├── name
-├── status (active/unsubscribed/bounced)
-├── subscribed_at
-├── unsubscribed_at
-└── last_sent_at
-
-newsletter_campaigns
-├── id
-├── subject
-├── content
-├── status (draft/sending/sent/failed)
-├── sent_count
-├── open_count
-├── click_count
-├── created_by
-└── sent_at
-
-newsletter_opens
-├── id
-├── campaign_id
-├── subscriber_id
-├── opened_at
-├── user_agent
-└── ip_address
+├── subscribe
+├── unsubscribe
+├── subscribers
+├── campaigns
+└── send
 ```
 
 ---
 
-# 🔄 Cập nhật các file hiện có
+## Database
 
-| File | Thay đổi |
-|--------|----------|
-| `package.json` | Thêm 9 package TipTap Extensions: Highlight, Subscript, Superscript, YouTube, Table, TableRow, TableCell, TableHeader |
-| `AdminSidebar.tsx` | Thêm menu Newsletter với icon Mail |
-| `Footer.tsx` | Thay thế form Newsletter cũ bằng `NewsletterForm` component |
-| `page.tsx` (Home) | Thêm `NewsletterForm` Card ở Sidebar |
-| `database.types.ts` | Thêm types cho `newsletter_subscribers`, `newsletter_campaigns`, `newsletter_opens` |
-| `posts/new/page.tsx` | Thay `textarea` bằng `TipTapEditor` với Dynamic Import (SSR-safe) |
+### newsletter_subscribers
+
+```text
+id
+email
+name
+status
+subscribed_at
+unsubscribed_at
+last_sent_at
+```
+
+### newsletter_campaigns
+
+```text
+id
+subject
+content
+status
+sent_count
+open_count
+click_count
+created_by
+sent_at
+```
+
+### newsletter_opens
+
+```text
+id
+campaign_id
+subscriber_id
+opened_at
+user_agent
+ip_address
+```
 
 ---
 
-# 🚀 Hướng dẫn triển khai mở rộng
-
-## Bước 1: Cài đặt Dependencies mới
+# 📦 Dependencies Chính
 
 ```bash
-cd thaygiaocago-cms
-npm install
+next
+react
+typescript
+tailwindcss
+
+@supabase/supabase-js
+
+@tiptap/react
+@tiptap/starter-kit
+@tiptap/extension-highlight
+@tiptap/extension-subscript
+@tiptap/extension-superscript
+@tiptap/extension-youtube
+@tiptap/extension-table
+@tiptap/extension-table-row
+@tiptap/extension-table-cell
+@tiptap/extension-table-header
+
+react-hot-toast
+lucide-react
 ```
 
-## Bước 2: Chạy Migration mới trên Supabase
+---
 
-Truy cập:
+# 👑 Tạo Admin User Đầu Tiên
 
-**Supabase Dashboard → SQL Editor → New Query**
+Sau khi đăng ký tài khoản:
 
-Sau đó:
-
-1. Mở file `supabase/migrations/002_newsletter.sql`
-2. Copy toàn bộ nội dung
-3. Paste vào SQL Editor
-4. Nhấn **Run**
-
-## Bước 3: Cấu hình gửi Email (Tùy chọn)
-
-Mặc định API `/api/newsletter/send` chỉ cập nhật Database.
-
-Để gửi Email thực tế, có thể tích hợp:
-
-- Resend
-- SendGrid
-- AWS SES
-
-Ví dụ với **Resend**:
-
-```ts
-// Trong /api/newsletter/send/route.ts
-
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Gửi email cho từng subscriber
-for (const subscriber of subscribers) {
-  await resend.emails.send({
-    from: "newsletter@yourdomain.com",
-    to: subscriber.email,
-    subject,
-    html:
-      content +
-      `<p><a href="${unsubscribeUrl}">Hủy đăng ký</a></p>`,
-  });
-}
+```sql
+UPDATE public.profiles
+SET role = 'admin'
+WHERE email = 'your-email@example.com';
 ```
 
-## Bước 4: Thêm biến môi trường
+---
+
+# 🚀 Deploy Lên Vercel
+
+## Push Source Code
+
+```bash
+git init
+
+git add .
+
+git commit -m "Initial commit"
+
+git branch -M main
+
+git remote add origin https://github.com/ngoctu2008/thaygiaocago-cms.git
+
+git push -u origin main
+```
+
+---
+
+## Deploy
+
+Vào:
+
+```text
+https://vercel.com
+```
+
+Chọn:
+
+```text
+Import Git Repository
+```
+
+Framework:
+
+```text
+Next.js
+```
+
+Thêm Environment Variables:
 
 ```env
-# .env.local
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY
+NEXT_PUBLIC_SITE_URL
+RESEND_API_KEY
+```
 
-RESEND_API_KEY=re_xxxxxxxx
-NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
+Nhấn Deploy.
+
+---
+
+# 📊 Thống Kê Dự Án
+
+| Hạng mục | Số lượng |
+|-----------|-----------|
+| Frontend Components | 7 |
+| Admin Components | 4 |
+| UI Components | 18 |
+| API Routes | 10 |
+| App Pages | 10+ |
+| Database Tables | 10+ |
+| Hooks | 4 |
+| Server Actions | 15+ |
+| TipTap Extensions | 9 |
+
+---
+
+# 🛣️ Roadmap
+
+## Version 1.1
+
+- [ ] AI Content Generator
+- [ ] AI SEO Assistant
+- [ ] Comment System
+- [ ] Multi-language
+- [ ] Analytics Dashboard
+
+## Version 1.2
+
+- [ ] Push Notification
+- [ ] Membership System
+- [ ] Video Library
+- [ ] Mobile API
+
+## Version 2.0
+
+- [ ] LMS Module
+- [ ] Online Courses
+- [ ] Payment Gateway
+- [ ] Marketplace
+
+---
+
+# 🤝 Đóng Góp
+
+Mọi đóng góp đều được chào đón.
+
+1. Fork dự án
+2. Tạo branch mới
+
+```bash
+git checkout -b feature/my-feature
+```
+
+3. Commit
+
+```bash
+git commit -m "Add new feature"
+```
+
+4. Push
+
+```bash
+git push origin feature/my-feature
+```
+
+5. Tạo Pull Request
+
+---
+
+# 📜 License
+
+MIT License
+
+Copyright (c) 2026 Ngọc Tú
+
+---
+
+# 👨‍💻 Tác Giả
+
+## Ngọc Tú
+
+- Chuyên viên Công nghệ thông tin
+- Nhà phát triển Website & CMS
+- Chuyên gia triển khai Next.js, Supabase, NukeViet
+- Nghiên cứu ứng dụng AI trong giáo dục
+
+GitHub:
+
+```text
+https://github.com/ngoctu2008
 ```
 
 ---
 
-# 📊 Tổng kết dự án hoàn chỉnh
+<div align="center">
 
-| Module | Thành phần | Tính năng |
-|----------|------------|-----------|
-| Frontend Site | 7 Components | Header, Footer, Hero, PostCard, Sidebar, PostContent, RelatedPosts |
-| Frontend Admin | 4 Components | AdminSidebar, StatsCards, EditorToolbar, TipTapEditor |
-| UI Components | 18 Components | Button, Input, Textarea, Select, Card, Badge, Modal, Table, Tabs, Toast, Spinner, EmptyState, ImageUpload, ColorPicker, Toggle, SearchInput, Pagination, ConfirmDialog |
-| API Routes | 10 Routes | Posts, Categories, Users, Settings, Upload, Newsletter (5 Routes) |
-| App Pages | 10+ Pages | Home, Post Detail, Category, Search, Login, Dashboard, Posts CRUD, Categories, Users, Settings, Appearance, Newsletter |
-| Database | 8 Tables | Profiles, Posts, Categories, Site Settings, Appearance Settings, Navigation, Comments, Newsletter Subscribers/Campaigns/Opens |
-| Hooks | 4 Hooks | useAuth, usePosts, useCategories, useSiteSettings |
-| Server Actions | 15+ Actions | Auth, Post CRUD, Category CRUD, User Management, Settings, Upload |
+## ❤️ Ngọc Tú CMS
 
----
+Modern CMS powered by Next.js + Supabase + TipTap
 
-## ✅ Trạng thái dự án
+**Developed by Ngọc Tú**
 
-> Dự án đã sẵn sàng để triển khai (**Deploy**) trên **Vercel** với **Supabase Backend**, hỗ trợ:
->
-> - ✍️ TipTap Rich Text Editor nâng cao
-> - 📧 Newsletter Marketing
-> - 🔐 Authentication & Authorization
-> - 📂 Quản lý bài viết, danh mục
-> - 🎨 Quản lý giao diện Website
-> - ☁️ Upload hình ảnh lên Supabase Storage
-> - 📊 Thống kê và quản trị nội dung
+Made with ❤️ in Vietnam 🇻🇳
+
+</div>
