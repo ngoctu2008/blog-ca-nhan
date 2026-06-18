@@ -1,8 +1,8 @@
-# 📰 Thầy Giáo Cà Gô - CMS Blog
+# 📰 Ngọc Tú - CMS Blog
 
 Hệ thống quản lý nội dung blog tin tức giáo dục, xây dựng với **Next.js 15**, **Supabase**, **Tailwind CSS**, **TipTap Editor** và **Newsletter**.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fthaygiaocago-cms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&project-name=thaygiaocago-cms&repository-name=thaygiaocago-cms)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fngoctu2008%2Fngoctu-cms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&project-name=ngoctu-cms&repository-name=ngoctu-cms)
 
 ---
 
@@ -22,7 +22,7 @@ Hệ thống quản lý nội dung blog tin tức giáo dục, xây dựng với
 
 ### Bước 2: Deploy lên Vercel (1-click)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fthaygiaocago-cms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&project-name=thaygiaocago-cms&repository-name=thaygiaocago-cms)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fngoctu2008%2Fngoctu-cms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&project-name=ngoctu-cms&repository-name=ngoctu-cms)
 
 1. Nhấn nút **Deploy** bên trên.
 2. Điền các biến môi trường đã lưu ở Bước 1:
@@ -52,8 +52,8 @@ WHERE email = 'email-cua-ban@example.com';
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/YOUR_USERNAME/thaygiaocago-cms.git
-cd thaygiaocago-cms
+git clone https://github.com/ngoctu2008/ngoctu-cms.git
+cd ngoctu-cms
 
 # 2. Cài đặt dependencies
 npm install
@@ -124,7 +124,7 @@ npm run dev
 ## 📂 Cấu trúc dự án
 
 ```
-thaygiaocago-cms/
+ngoctu-cms/
 ├── docs/
 │   └── migrations/
 │       └── 001_initial.sql      # Database schema
@@ -168,4 +168,4 @@ MIT License - Tự do sử dụng cho mục đích cá nhân và thương mại.
 
 ## 💬 Hỗ trợ
 
-Nếu gặp vấn đề, vui lòng tạo [Issue](https://github.com/YOUR_USERNAME/thaygiaocago-cms/issues) trên GitHub.
+Nếu gặp vấn đề, vui lòng tạo [Issue](https://github.com/ngoctu2008/ngoctu-cms/issues) trên GitHub.

@@ -11,8 +11,8 @@ interface FooterProps {
 }
 
 export default function Footer({
-  siteName = "Thay Giao Ca Go",
-  footerText = "© 2024 Thay Giao Ca Go. Tat ca cac quyen duoc bao luu.",
+  siteName = "Ngọc Tú",
+  footerText = "© 2024 Ngọc Tú. Tất cả các quyền được bảo lưu.",
   socialLinks = {},
 }: FooterProps) {
   return (

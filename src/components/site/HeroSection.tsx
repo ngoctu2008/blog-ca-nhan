@@ -20,8 +20,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({
-  title = "Chia sẻ kiến thức giáo dục",
-  subtitle = "Nơi kết nối cộng đồng giáo viên, phụ huynh và học sinh",
+  title = "Chia sẻ kiến thức và trải nghiệm",
+  subtitle = "Blog cá nhân của Ngọc Tú",
   image,
   featuredPosts = [],
 }: HeroSectionProps) {

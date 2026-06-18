@@ -11,7 +11,7 @@ interface HeaderProps {
   categories?: Array<{ id: string; name: string; slug: string }>;
 }
 
-export default function Header({ siteName = "Thầy Giáo Cà Gô", categories = [] }: HeaderProps) {
+export default function Header({ siteName = "Ngọc Tú", categories = [] }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const { theme, setTheme } = useTheme();

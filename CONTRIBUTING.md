@@ -1,4 +1,4 @@
-# Contributing to Thầy Giáo Cà Gô CMS
+# Contributing to Ngọc Tú CMS
 
 Cảm ơn bạn đã quan tâm đến việc đóng góp cho dự án!
 

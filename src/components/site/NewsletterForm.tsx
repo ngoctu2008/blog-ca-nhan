@@ -16,7 +16,7 @@ interface NewsletterFormProps {
 export default function NewsletterForm({
   variant = "card",
   title = "Đăng ký nhận tin",
-  description = "Nhận thông báo khi có bài viết mới và các thông tin giáo dục hữu ích.",
+  description = "Nhận thông báo khi có bài viết mới từ Ngọc Tú.",
   className,
 }: NewsletterFormProps) {
   const [email, setEmail] = useState("");
