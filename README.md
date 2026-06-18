@@ -1,613 +1,171 @@
-<div align="center">
+# 📰 Thầy Giáo Cà Gô - CMS Blog
 
-# 🚀 Ngọc Tú CMS
+Hệ thống quản lý nội dung blog tin tức giáo dục, xây dựng với **Next.js 15**, **Supabase**, **Tailwind CSS**, **TipTap Editor** và **Newsletter**.
 
-### Modern CMS Platform powered by Next.js 15, Supabase & TipTap Editor
-
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-Backend-green?logo=supabase)](https://supabase.com/)
-[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?logo=tailwindcss)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://vercel.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-**Developed by Ngọc Tú**
-
-</div>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fthaygiaocago-cms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&project-name=thaygiaocago-cms&repository-name=thaygiaocago-cms)
 
 ---
 
-# 📖 Giới Thiệu
+## ⚡ Cài đặt nhanh (10-15 phút)
 
-**Ngọc Tú CMS** là hệ thống quản trị nội dung (CMS) hiện đại được xây dựng bằng Next.js App Router và Supabase.
+### Bước 1: Tạo Database (Miễn phí với Supabase)
 
-Hệ thống hỗ trợ:
+1. Tạo tài khoản miễn phí tại [https://github.com](https://github.com) nếu chưa có.
+2. Tạo tài khoản miễn phí tại [https://supabase.com](https://supabase.com) (khuyên dùng đăng ký bằng GitHub).
+3. Tạo **New Project**. Đợi 1-2 phút để hệ thống khởi tạo.
+4. Vào **Project Settings → API**, giữ lại 2 giá trị:
+   - **Project URL** → dùng cho `NEXT_PUBLIC_SUPABASE_URL`
+   - **Project API Keys** (anon/public) → dùng cho `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - **Service Role Key** → dùng cho `SUPABASE_SERVICE_ROLE_KEY` (Settings → API → Service Role)
 
-- 📰 Quản lý bài viết chuyên nghiệp
-- 📂 Quản lý danh mục
-- 👥 Quản lý người dùng và phân quyền
-- ✍️ TipTap Rich Text Editor
-- 📧 Newsletter Marketing
-- 🎨 Tùy chỉnh giao diện
-- 🌙 Dark Mode
-- ☁️ Upload hình ảnh lên Supabase Storage
-- 🔐 Authentication & Authorization
-- 🚀 Deploy nhanh trên Vercel
+5. Vào **SQL Editor → New Query**, chạy toàn bộ file `docs/migrations/001_initial.sql` để tạo bảng dữ liệu.
 
----
+### Bước 2: Deploy lên Vercel (1-click)
 
-# 📋 Mục Lục
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fthaygiaocago-cms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&project-name=thaygiaocago-cms&repository-name=thaygiaocago-cms)
 
-- [Tính năng](#-tính-năng)
-- [Kiến trúc hệ thống](#-kiến-trúc-hệ-thống)
-- [Cấu trúc dự án](#-cấu-trúc-dự-án)
-- [Yêu cầu hệ thống](#-yêu-cầu-hệ-thống)
-- [Cài đặt](#-cài-đặt)
-- [Cấu hình môi trường](#-cấu-hình-môi-trường)
-- [Supabase Setup](#-supabase-setup)
-- [TipTap Editor](#-tiptap-rich-text-editor)
-- [Newsletter](#-newsletter-subscription)
-- [Deploy lên Vercel](#-deploy-lên-vercel)
-- [Database Schema](#-database-schema)
-- [Roadmap](#-roadmap)
-- [License](#-license)
+1. Nhấn nút **Deploy** bên trên.
+2. Điền các biến môi trường đã lưu ở Bước 1:
+   - `NEXT_PUBLIC_SUPABASE_URL` = Project URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = Project API Keys (anon/public)
+   - `SUPABASE_SERVICE_ROLE_KEY` = Service Role Key
+3. Nhấn **Deploy** và chờ 2-3 phút.
+4. Bạn sẽ có website để sử dụng ngay!
 
----
+### Bước 3: Tạo Admin User
 
-# ✨ Tính Năng
+1. Truy cập website vừa deploy.
+2. Vào trang `/login` và đăng ký tài khoản mới.
+3. Vào **Supabase SQL Editor**, chạy:
 
-## 🌐 Frontend Website
-
-| Tính năng | Trạng thái |
-|------------|------------|
-| Hero Section | ✅ |
-| Featured Posts | ✅ |
-| Post Grid | ✅ |
-| Search | ✅ |
-| Category Pages | ✅ |
-| Related Posts | ✅ |
-| Responsive | ✅ |
-| Dark Mode | ✅ |
-| Newsletter Form | ✅ |
-
----
-
-## 🔐 Authentication
-
-| Tính năng | Trạng thái |
-|------------|------------|
-| Login | ✅ |
-| Logout | ✅ |
-| Session Management | ✅ |
-| Role Permission | ✅ |
-| Admin | ✅ |
-| Editor | ✅ |
-| Author | ✅ |
-
----
-
-## 📝 Content Management
-
-| Tính năng | Trạng thái |
-|------------|------------|
-| CRUD Posts | ✅ |
-| CRUD Categories | ✅ |
-| Upload Cover Image | ✅ |
-| SEO Meta | ✅ |
-| Tags | ✅ |
-| Slug Generator | ✅ |
-
----
-
-## ⚙️ Administration
-
-| Tính năng | Trạng thái |
-|------------|------------|
-| Dashboard | ✅ |
-| User Management | ✅ |
-| Appearance Settings | ✅ |
-| Site Settings | ✅ |
-| Newsletter Management | ✅ |
-
----
-
-# 🏗️ Kiến Trúc Hệ Thống
-
-```text
-Browser
-   │
-   ▼
-Next.js Frontend
-   │
-   ├── Server Actions
-   ├── API Routes
-   │
-   ▼
-Supabase Backend
-   ├── PostgreSQL
-   ├── Authentication
-   └── Storage
+```sql
+UPDATE public.profiles 
+SET role = 'admin' 
+WHERE email = 'email-cua-ban@example.com';
 ```
 
----
-
-# 📂 Cấu Trúc Dự Án
-
-```text
-thaygiaocago-cms/
-
-├── src/
-│
-├── app/
-│   ├── (site)
-│   ├── (admin)
-│   ├── api
-│   ├── login
-│   └── unsubscribe
-│
-├── components/
-│   ├── admin
-│   ├── site
-│   └── ui
-│
-├── hooks
-├── lib
-├── styles
-├── types
-│
-└── supabase/
-    └── migrations
-```
+4. Đăng nhập lại → bạn đã có quyền Admin!
 
 ---
 
-# 💻 Yêu Cầu Hệ Thống
-
-| Thành phần | Phiên bản |
-|------------|-----------|
-| Node.js | >= 20 |
-| npm | >= 10 |
-| PostgreSQL | Supabase |
-| Next.js | 15 |
-| TypeScript | 5 |
-
----
-
-# ⚡ Cài Đặt
-
-## Clone Repository
+## 🛠️ Cài đặt thủ công (Development)
 
 ```bash
-git clone https://github.com/ngoctu2008/thaygiaocago-cms.git
-
+# 1. Clone repository
+git clone https://github.com/YOUR_USERNAME/thaygiaocago-cms.git
 cd thaygiaocago-cms
-```
 
-## Cài đặt Packages
-
-```bash
+# 2. Cài đặt dependencies
 npm install
-```
 
-## Chạy Local
+# 3. Tạo file .env.local
+cp .env.local.example .env.local
 
-```bash
+# 4. Điền các giá trị vào .env.local
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# 5. Chạy migration SQL trong Supabase SQL Editor
+# docs/migrations/001_initial.sql
+
+# 6. Chạy development server
 npm run dev
 ```
 
-Mở trình duyệt:
+---
 
-```text
-http://localhost:3000
+## ✨ Tính năng
+
+### 📝 Quản lý Bài viết
+- **TipTap Rich Text Editor** - Trình soạn thảo WYSIWYG với 30+ công cụ
+- Hỗ trợ chèn ảnh (upload lên Supabase Storage), video YouTube, bảng
+- Phân loại theo danh mục, gắn tag, SEO meta
+- Bài viết nổi bật, lưu bản nháp
+
+### 📧 Newsletter
+- Form đăng ký nhận tin ở footer và sidebar
+- Quản lý subscribers, gửi chiến dịch email
+- Theo dõi open rate, click rate
+- Link hủy đăng ký an toàn
+
+### 🎨 Tùy chỉnh Giao diện
+- Dark mode tự động
+- Tùy chỉnh màu sắc chủ đạo
+- Hero section, sidebar, trending posts
+- Custom CSS
+
+### 👥 Quản lý Người dùng
+- Phân quyền: Admin, Editor, Author, Subscriber
+- Quản lý profile, avatar
+
+### 🔍 Khác
+- Tìm kiếm full-text
+- Responsive design
+- Share buttons (Facebook, Twitter)
+- View count, read time estimate
+- Comments system
+
+---
+
+## 🏗️ Công nghệ
+
+| Công nghệ | Mục đích |
+|-----------|----------|
+| Next.js 15 | Framework React full-stack |
+| Supabase | Database, Auth, Storage |
+| Tailwind CSS | Styling |
+| TipTap | Rich Text Editor |
+| TypeScript | Type safety |
+| Vercel | Hosting |
+
+---
+
+## 📂 Cấu trúc dự án
+
+```
+thaygiaocago-cms/
+├── docs/
+│   └── migrations/
+│       └── 001_initial.sql      # Database schema
+├── src/
+│   ├── app/                      # Next.js App Router
+│   │   ├── (admin)/              # Admin routes
+│   │   ├── (site)/               # Public site routes
+│   │   ├── api/                  # API routes
+│   │   └── login/                # Login page
+│   ├── components/
+│   │   ├── admin/                # Admin components
+│   │   ├── site/                 # Site components
+│   │   └── ui/                   # UI components (18 components)
+│   ├── hooks/                    # Custom React hooks
+│   ├── lib/                      # Utilities, Supabase clients, actions
+│   ├── styles/                   # Global & editor CSS
+│   └── types/                    # TypeScript types
+├── .env.local.example            # Environment variables template
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
 ---
 
-# 🔧 Cấu Hình Môi Trường
+## 🔐 Environment Variables
 
-Tạo file:
-
-```env
-.env.local
-```
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-
-NEXT_PUBLIC_SITE_NAME=Ngọc Tú
-
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
-
-RESEND_API_KEY=re_xxxxxxxxx
-```
+| Biến | Bắt buộc | Mô tả |
+|------|----------|-------|
+| `NEXT_PUBLIC_SUPABASE_URL` | ✅ | Supabase Project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ✅ | Supabase Anon/Public API Key |
+| `SUPABASE_SERVICE_ROLE_KEY` | ✅ | Supabase Service Role Key (cho admin operations) |
 
 ---
 
-# 🗄️ Supabase Setup
+## 📝 License
 
-## Tạo Project
-
-Truy cập:
-
-```text
-https://supabase.com
-```
-
-Tạo project mới.
+MIT License - Tự do sử dụng cho mục đích cá nhân và thương mại.
 
 ---
 
-## Chạy Migration
+## 💬 Hỗ trợ
 
-SQL Editor → New Query
-
-Chạy:
-
-```sql
-001_initial_schema.sql
-```
-
-Tiếp theo:
-
-```sql
-002_newsletter.sql
-```
-
----
-
-## Authentication
-
-```text
-Authentication
-→ Settings
-→ Enable Email Provider
-```
-
----
-
-## Storage
-
-```text
-Storage
-→ Create Bucket
-→ images
-→ Public
-```
-
----
-
-# 🎨 TipTap Rich Text Editor
-
-## Tính năng
-
-| Tính năng | Hỗ trợ |
-|------------|---------|
-| Bold | ✅ |
-| Italic | ✅ |
-| Underline | ✅ |
-| Strikethrough | ✅ |
-| Subscript | ✅ |
-| Superscript | ✅ |
-| H1-H6 | ✅ |
-| Bullet List | ✅ |
-| Ordered List | ✅ |
-| Alignment | ✅ |
-| Image Upload | ✅ |
-| YouTube Embed | ✅ |
-| Table | ✅ |
-| Blockquote | ✅ |
-| Code Block | ✅ |
-| Highlight | ✅ |
-| Link | ✅ |
-| Undo / Redo | ✅ |
-
----
-
-## Cấu trúc
-
-```text
-src/components/admin/
-
-├── EditorToolbar.tsx
-├── TipTapEditor.tsx
-└── AdminSidebar.tsx
-
-src/styles/
-
-└── editor.css
-```
-
----
-
-## Sử dụng
-
-```tsx
-const TipTapEditor = dynamic(
-  () => import("@/components/admin/TipTapEditor"),
-  {
-    ssr: false
-  }
-);
-
-<TipTapEditor
-  content={content}
-  onChange={setContent}
-  placeholder="Viết nội dung bài viết..."
-/>
-```
-
----
-
-# 📧 Newsletter Subscription
-
-## Tính năng
-
-| Tính năng | Trạng thái |
-|------------|------------|
-| Subscribe | ✅ |
-| Re-subscribe | ✅ |
-| Unsubscribe | ✅ |
-| Campaign Management | ✅ |
-| Open Tracking | ✅ |
-| Click Tracking | ✅ |
-| Statistics | ✅ |
-
----
-
-## API Routes
-
-```text
-/api/newsletter/
-
-├── subscribe
-├── unsubscribe
-├── subscribers
-├── campaigns
-└── send
-```
-
----
-
-## Database
-
-### newsletter_subscribers
-
-```text
-id
-email
-name
-status
-subscribed_at
-unsubscribed_at
-last_sent_at
-```
-
-### newsletter_campaigns
-
-```text
-id
-subject
-content
-status
-sent_count
-open_count
-click_count
-created_by
-sent_at
-```
-
-### newsletter_opens
-
-```text
-id
-campaign_id
-subscriber_id
-opened_at
-user_agent
-ip_address
-```
-
----
-
-# 📦 Dependencies Chính
-
-```bash
-next
-react
-typescript
-tailwindcss
-
-@supabase/supabase-js
-
-@tiptap/react
-@tiptap/starter-kit
-@tiptap/extension-highlight
-@tiptap/extension-subscript
-@tiptap/extension-superscript
-@tiptap/extension-youtube
-@tiptap/extension-table
-@tiptap/extension-table-row
-@tiptap/extension-table-cell
-@tiptap/extension-table-header
-
-react-hot-toast
-lucide-react
-```
-
----
-
-# 👑 Tạo Admin User Đầu Tiên
-
-Sau khi đăng ký tài khoản:
-
-```sql
-UPDATE public.profiles
-SET role = 'admin'
-WHERE email = 'your-email@example.com';
-```
-
----
-
-# 🚀 Deploy Lên Vercel
-
-## Push Source Code
-
-```bash
-git init
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git remote add origin https://github.com/ngoctu2008/thaygiaocago-cms.git
-
-git push -u origin main
-```
-
----
-
-## Deploy
-
-Vào:
-
-```text
-https://vercel.com
-```
-
-Chọn:
-
-```text
-Import Git Repository
-```
-
-Framework:
-
-```text
-Next.js
-```
-
-Thêm Environment Variables:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_ANON_KEY
-SUPABASE_SERVICE_ROLE_KEY
-NEXT_PUBLIC_SITE_URL
-RESEND_API_KEY
-```
-
-Nhấn Deploy.
-
----
-
-# 📊 Thống Kê Dự Án
-
-| Hạng mục | Số lượng |
-|-----------|-----------|
-| Frontend Components | 7 |
-| Admin Components | 4 |
-| UI Components | 18 |
-| API Routes | 10 |
-| App Pages | 10+ |
-| Database Tables | 10+ |
-| Hooks | 4 |
-| Server Actions | 15+ |
-| TipTap Extensions | 9 |
-
----
-
-# 🛣️ Roadmap
-
-## Version 1.1
-
-- [ ] AI Content Generator
-- [ ] AI SEO Assistant
-- [ ] Comment System
-- [ ] Multi-language
-- [ ] Analytics Dashboard
-
-## Version 1.2
-
-- [ ] Push Notification
-- [ ] Membership System
-- [ ] Video Library
-- [ ] Mobile API
-
-## Version 2.0
-
-- [ ] LMS Module
-- [ ] Online Courses
-- [ ] Payment Gateway
-- [ ] Marketplace
-
----
-
-# 🤝 Đóng Góp
-
-Mọi đóng góp đều được chào đón.
-
-1. Fork dự án
-2. Tạo branch mới
-
-```bash
-git checkout -b feature/my-feature
-```
-
-3. Commit
-
-```bash
-git commit -m "Add new feature"
-```
-
-4. Push
-
-```bash
-git push origin feature/my-feature
-```
-
-5. Tạo Pull Request
-
----
-
-# 📜 License
-
-MIT License
-
-Copyright (c) 2026 Ngọc Tú
-
----
-
-# 👨‍💻 Tác Giả
-
-## Ngọc Tú
-
-- Chuyên viên Công nghệ thông tin
-- Nhà phát triển Website & CMS
-- Chuyên gia triển khai Next.js, Supabase, NukeViet
-- Nghiên cứu ứng dụng AI trong giáo dục
-
-GitHub:
-
-```text
-https://github.com/ngoctu2008
-```
-
----
-
-<div align="center">
-
-## ❤️ Ngọc Tú CMS
-
-Modern CMS powered by Next.js + Supabase + TipTap
-
-**Developed by Ngọc Tú**
-
-Made with ❤️ in Vietnam 🇻🇳
-
-</div>
+Nếu gặp vấn đề, vui lòng tạo [Issue](https://github.com/YOUR_USERNAME/thaygiaocago-cms/issues) trên GitHub.
