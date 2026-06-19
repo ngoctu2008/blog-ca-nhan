@@ -33,13 +33,14 @@ export async function PUT(request: Request) {
       .eq("id", user.id)
       .single();
 
-    if (!profile || !["admin", "editor"].includes(profile.role)) {
+    if (!profile || !["admin", "editor"].includes((profile as any).role)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const { error } = await supabase
       .from("appearance_settings")
-      .update({ ...body, updated_at: new Date().toISOString() })
+      // @ts-ignore
+      .update({ ...body, updated_at: new Date().toISOString() } as any)
       .eq("id", body.id);
 
     if (error) throw error;

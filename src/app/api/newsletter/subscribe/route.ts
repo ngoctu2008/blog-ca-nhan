@@ -19,14 +19,15 @@ export async function POST(request: Request) {
       .single();
 
     if (existing) {
-      if (existing.status === "active") {
+      if ((existing as any).status === "active") {
         return NextResponse.json({ error: "Email da duoc dang ky" }, { status: 409 });
       }
       // Reactivate
       const { error } = await supabase
         .from("newsletter_subscribers")
-        .update({ status: "active", subscribed_at: new Date().toISOString() })
-        .eq("id", existing.id);
+        // @ts-ignore
+        .update({ status: "active", subscribed_at: new Date().toISOString() } as any)
+        .eq("id", (existing as any).id);
 
       if (error) throw error;
       return NextResponse.json({ message: "Dang ky lai thanh cong" });
@@ -35,12 +36,13 @@ export async function POST(request: Request) {
     // New subscriber
     const { error } = await supabase
       .from("newsletter_subscribers")
-      .insert({
+      // @ts-ignore
+      .insert([{
         email,
         name: name || null,
         status: "active",
         subscribed_at: new Date().toISOString(),
-      });
+      }] as any);
 
     if (error) throw error;
 

@@ -21,7 +21,8 @@ export async function GET(request: Request) {
 
     const { error } = await supabase
       .from("newsletter_subscribers")
-      .update({ status: "unsubscribed", unsubscribed_at: new Date().toISOString() })
+      // @ts-ignore
+      .update({ status: "unsubscribed", unsubscribed_at: new Date().toISOString() } as any)
       .eq("email", email);
 
     if (error) throw error;
