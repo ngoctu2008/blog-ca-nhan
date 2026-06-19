@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       .eq("id", user.id)
       .single();
 
-    if (!profile || !["admin", "editor"].includes(profile.role)) {
+    if (!profile || !["admin", "editor"].includes((profile as any).role)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -41,14 +41,15 @@ export async function POST(request: Request) {
     // Create campaign record
     const { data: campaign, error: campError } = await supabase
       .from("newsletter_campaigns")
-      .insert({
+      // @ts-ignore
+      .insert([{
         subject,
         content,
         status: "sending",
         sent_count: 0,
         open_count: 0,
         created_by: user.id,
-      })
+      }] as any)
       .select()
       .single();
 
@@ -62,23 +63,25 @@ export async function POST(request: Request) {
     // Update campaign status
     await supabase
       .from("newsletter_campaigns")
+      // @ts-ignore
       .update({
         status: "sent",
         sent_count: sentCount,
         sent_at: new Date().toISOString(),
-      })
-      .eq("id", campaign.id);
+      } as any)
+      .eq("id", (campaign as any).id);
 
     // Update last_sent_at for subscribers
     await supabase
       .from("newsletter_subscribers")
+      // @ts-ignore
       .update({ last_sent_at: new Date().toISOString() })
       .eq("status", "active");
 
     return NextResponse.json({
       message: "Da gui thanh cong",
       sent_count: sentCount,
-      campaign_id: campaign.id,
+      campaign_id: (campaign as any).id,
     });
   } catch (error) {
     console.error("Send newsletter error:", error);

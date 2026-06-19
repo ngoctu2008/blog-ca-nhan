@@ -19,17 +19,17 @@ export default async function HomePage({ searchParams }: { searchParams: { page?
     supabase.from("posts").select("*, author:profiles(id, full_name, avatar_url), category:categories(*)").eq("status", "published").order("view_count", { ascending: false }).limit(5),
   ]);
 
-  const allTags = [...new Set((posts || []).flatMap((p) => p.tags || []))].slice(0, 15);
+  const allTags = [...new Set((posts || []).flatMap((p: any) => p.tags || []))].slice(0, 15);
   const totalPages = Math.ceil((count || 0) / perPage);
-  const showNewsletter = (appearance as AppearanceSettings)?.show_newsletter !== false;
+  const showNewsletter = (appearance as unknown as AppearanceSettings)?.show_newsletter !== false;
 
   return (
     <div>
-      {(appearance as AppearanceSettings)?.show_hero !== false && (
+      {(appearance as unknown as AppearanceSettings)?.show_hero !== false && (
         <HeroSection
-          title={(appearance as AppearanceSettings)?.hero_title || undefined}
-          subtitle={(appearance as AppearanceSettings)?.hero_subtitle || undefined}
-          image={(appearance as AppearanceSettings)?.hero_image || undefined}
+          title={(appearance as unknown as AppearanceSettings)?.hero_title || undefined}
+          subtitle={(appearance as unknown as AppearanceSettings)?.hero_subtitle || undefined}
+          image={(appearance as unknown as AppearanceSettings)?.hero_image || undefined}
           featuredPosts={featuredPosts || []}
         />
       )}
@@ -41,7 +41,7 @@ export default async function HomePage({ searchParams }: { searchParams: { page?
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Bai viet moi</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {posts?.map((post) => (
+              {posts?.map((post: any) => (
                 <PostCard key={post.id} post={post} />
               ))}
             </div>
